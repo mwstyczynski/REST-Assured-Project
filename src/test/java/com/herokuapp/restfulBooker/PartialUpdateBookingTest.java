@@ -1,4 +1,4 @@
-package com.herokuapp.restfullBooker;
+package com.herokuapp.restfulBooker;
 
 import io.restassured.RestAssured;
 import io.restassured.http.ContentType;
@@ -26,9 +26,9 @@ public class PartialUpdateBookingTest extends BaseTest {
 
         Response patchedResponse = RestAssured.given().
                 // in accordance with documentation we need authentication for out PUT method so we add few lines after GIVEN().
-                        auth().preemptive().basic("admin", "password123").
-                        contentType(ContentType.JSON).
-                        body(patchedBody.toString()).patch("https://restful-booker.herokuapp.com/booking/" + bookingID);
+                auth().preemptive().basic("admin", "password123").
+                contentType(ContentType.JSON).
+                body(patchedBody.toString()).patch("https://restful-booker.herokuapp.com/booking/" + bookingID);
 
         patchedResponse.print();
 
@@ -43,6 +43,7 @@ public class PartialUpdateBookingTest extends BaseTest {
         softAssert.assertEquals(patchedResponse.jsonPath().getBoolean("depositpaid"), false);
         // as we are referring to another object inside main body we have to specify the path ('folders' dot-separated)
         softAssert.assertEquals(patchedResponse.jsonPath().getString("bookingdates.checkin"), "2021-05-05");
+// !!!  DEFECT FOUND: checkout date is changing when only check in date is changed. Checkout date should remain unchanged
         softAssert.assertEquals(patchedResponse.jsonPath().getString("bookingdates.checkout"), "2022-01-01");
         softAssert.assertEquals(patchedResponse.jsonPath().getString("additionalneeds"), "cocaine");
 

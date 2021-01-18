@@ -1,12 +1,10 @@
-package com.herokuapp.restfullBooker;
+package com.herokuapp.restfulBooker;
 
 import io.restassured.RestAssured;
 import io.restassured.response.Response;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 import org.testng.asserts.SoftAssert;
-
-import java.util.List;
 
 public class GetSingleBookingTest {
 

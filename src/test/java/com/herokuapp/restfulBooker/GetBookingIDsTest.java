@@ -1,4 +1,4 @@
-package com.herokuapp.restfullBooker;
+package com.herokuapp.restfulBooker;
 
 import io.restassured.RestAssured;
 import io.restassured.response.Response;
@@ -6,8 +6,6 @@ import org.testng.Assert;
 import org.testng.annotations.Test;
 
 import java.util.List;
-
-import static io.restassured.RestAssured.*;
 
 public class GetBookingIDsTest {
 
