@@ -22,4 +22,28 @@ public class GetBookingIDsTest extends BaseTest {
         List<Integer> bookingIds = response.jsonPath().getList("bookingid");
         Assert.assertFalse(bookingIds.isEmpty(), "List of booking IDs is empty");
     }
+
+
+    @Test
+    public void getBookingIDsWithFiltersTest() {
+
+        Response response = createBooking("Mark");
+        response.print();
+
+//    path param    GET/booking/{bookingid}
+//    query param   GET/booking/booking?firstname=sally&lastname=brown
+
+//    add query parameter to spec
+        spec.queryParam("firstname", "Mark");
+        spec.queryParam("lastname", "Brown");
+
+        Response filteredResponse = RestAssured.given(spec).get("/booking");
+        filteredResponse.print();
+
+        Assert.assertEquals(filteredResponse.getStatusCode(), 200, "Status code is not 200");
+
+        List<Integer> bookingIds = filteredResponse.jsonPath().getList("bookingid");
+        Assert.assertFalse(bookingIds.isEmpty(), "List of booking IDs is empty");
+    }
 }
+

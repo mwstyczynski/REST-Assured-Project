@@ -25,14 +25,14 @@ public class GetSingleBookingTest extends BaseTest {
 //        That's how we can continue the test even if one value is failing - rest of that will be validated
         SoftAssert softAssert = new SoftAssert();
 
-        softAssert.assertEquals(response.jsonPath().getString("firstname"), "Susan");
-        softAssert.assertEquals(response.jsonPath().getString("lastname"), "Ericsson");
-        softAssert.assertEquals(response.jsonPath().getInt("totalprice"), 768);
+        softAssert.assertEquals(response.jsonPath().getString("firstname"), "Monica");
+        softAssert.assertEquals(response.jsonPath().getString("lastname"), "Brown");
+        softAssert.assertEquals(response.jsonPath().getInt("totalprice"), 666);
         softAssert.assertEquals(response.jsonPath().getBoolean("depositpaid"), false);
         // As we are referring to another object inside main body we have to specify the path ('folders' dot-separated)
-        softAssert.assertEquals(response.jsonPath().getString("bookingdates.checkin"), "2020-07-25");
-        softAssert.assertEquals(response.jsonPath().getString("bookingdates.checkout"), "2020-10-06");
-        softAssert.assertEquals(response.jsonPath().getString("additionalneeds"), "Breakfast");
+        softAssert.assertEquals(response.jsonPath().getString("bookingdates.checkin"), "2021-01-01");
+        softAssert.assertEquals(response.jsonPath().getString("bookingdates.checkout"), "2022-01-01");
+        softAssert.assertEquals(response.jsonPath().getString("additionalneeds"), "cocaine");
 
         softAssert.assertAll();
 
