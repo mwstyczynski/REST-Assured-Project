@@ -24,11 +24,11 @@ public class PartialUpdateBookingTest extends BaseTest {
         patchedBookingDates.put("checkin", "2021-05-05");
         patchedBody.put("bookingdates", patchedBookingDates);
 
-        Response patchedResponse = RestAssured.given().
+        Response patchedResponse = RestAssured.given(spec).
                 // in accordance with documentation we need authentication for out PUT method so we add few lines after GIVEN().
                 auth().preemptive().basic("admin", "password123").
                 contentType(ContentType.JSON).
-                body(patchedBody.toString()).patch("https://restful-booker.herokuapp.com/booking/" + bookingID);
+                body(patchedBody.toString()).patch("/booking/" + bookingID);
 
         patchedResponse.print();
 

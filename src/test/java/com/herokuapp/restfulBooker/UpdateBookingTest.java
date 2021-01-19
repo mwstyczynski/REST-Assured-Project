@@ -36,11 +36,11 @@ public class UpdateBookingTest extends BaseTest {
 
 //      To get the updated response body of previously created record we put bookingID parameter
 //      into path String for PUT method and print updated response
-        Response updatedResponse = RestAssured.given().
+        Response updatedResponse = RestAssured.given(spec).
         // in accordance with documentation we need authentication for out PUT method so we add few lines after GIVEN().
                 auth().preemptive().basic("admin", "password123").
                 contentType(ContentType.JSON).
-                body(updatedBody.toString()).put("https://restful-booker.herokuapp.com/booking/" + bookingID);
+                body(updatedBody.toString()).put("/booking/" + bookingID);
 
         updatedResponse.print();
 

@@ -1,11 +1,23 @@
 package com.herokuapp.restfulBooker;
 
 import io.restassured.RestAssured;
+import io.restassured.builder.RequestSpecBuilder;
 import io.restassured.http.ContentType;
 import io.restassured.response.Response;
+import io.restassured.specification.RequestSpecification;
 import org.json.JSONObject;
+import org.testng.annotations.BeforeMethod;
 
 public class BaseTest {
+
+    protected RequestSpecification spec;
+
+    @BeforeMethod
+    public void setUp(){
+        spec = new RequestSpecBuilder().
+                setBaseUri("https://restful-booker.herokuapp.com").build();
+    }
+
 
     protected Response createBooking(String firstname) {
 
@@ -40,10 +52,10 @@ public class BaseTest {
   }
         */
 
-        Response response = RestAssured.given().
+        Response response = RestAssured.given(spec).
 //                auth().preemptive().basic("admin", "password123").
                 contentType(ContentType.JSON).
-                body(body.toString()).post("https://restful-booker.herokuapp.com/booking");
+                body(body.toString()).post("/booking");
 
         return response;
     }

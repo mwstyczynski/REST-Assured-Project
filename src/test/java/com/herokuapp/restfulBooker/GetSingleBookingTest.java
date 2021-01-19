@@ -6,11 +6,11 @@ import org.testng.Assert;
 import org.testng.annotations.Test;
 import org.testng.asserts.SoftAssert;
 
-public class GetSingleBookingTest {
+public class GetSingleBookingTest extends BaseTest {
 
     @Test
     public void getSingleIdTest(){
-        Response response = RestAssured.get("https://restful-booker.herokuapp.com/booking/2");
+        Response response = RestAssured.given(spec).get("/booking/2");
         response.print();
         System.out.println("Status code is: "+ response.getStatusCode());
         Assert.assertEquals(response.getStatusCode(), 200, "Status code is not 200");
