@@ -21,6 +21,10 @@ public class BookingObjectSerialize {
         this.additionalneeds = additionalneeds;
     }
 
+    // To be able to DESERIALIZE we need to create and empty constructor too
+    public BookingObjectSerialize() {
+    }
+
     // Generate toString() method
     @Override
     public String toString() {

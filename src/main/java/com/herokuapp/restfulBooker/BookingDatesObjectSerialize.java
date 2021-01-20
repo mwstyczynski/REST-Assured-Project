@@ -7,11 +7,14 @@ public class BookingDatesObjectSerialize {
     private String checkout;
 
 
-
     // Create a public constructor using declared fields
     public BookingDatesObjectSerialize(String checkin, String checkout) {
         this.checkin = checkin;
         this.checkout = checkout;
+    }
+
+    // To be able to DESERIALIZE we need to create and empty constructor too
+    public BookingDatesObjectSerialize() {
     }
 
     // Generate toString() method
