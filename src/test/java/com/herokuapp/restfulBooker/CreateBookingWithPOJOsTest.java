@@ -14,7 +14,7 @@ public class CreateBookingWithPOJOsTest extends BaseTest {
     public void postBookingWithPOJOsTest() {
 
 //      Create RESPONSE BODY with BookingObjectSerialize & BookingDatesObjectSerialize (this one 1st as it's used as variable value for 2nd one)
-        BookingDatesObjectSerialize dates = new BookingDatesObjectSerialize("2020-01-01", "2021-01-01");
+        BookingDatesObjectSerialize dates = new BookingDatesObjectSerialize("2021-01-01", "2022-01-01");
         BookingObjectSerialize serializedBody = new BookingObjectSerialize("John", "Brown", 666, false, dates, "cocaine");
 
 //      Create RestAssured response
