@@ -38,6 +38,18 @@ public class BaseTest {
         body.put("bookingdates", bookingDates);
         body.put("additionalneeds", "cocaine");
 
+//      Create a RestAssured response instance of Response class
+        Response response = RestAssured.given(spec).
+//                used for requests that require authentication
+//                auth().preemptive().basic("admin", "password123").
+                contentType(ContentType.JSON).
+                body(body.toString()).post("/booking");
+
+        return response;
+    }
+}
+
+
         /*
   https://restful-booker.herokuapp.com/booking
   {                                         Complete body object
@@ -51,12 +63,3 @@ public class BaseTest {
     "additionalneeds" : "Breakfast"
   }
         */
-
-        Response response = RestAssured.given(spec).
-//                auth().preemptive().basic("admin", "password123").
-                contentType(ContentType.JSON).
-                body(body.toString()).post("/booking");
-
-        return response;
-    }
-}
