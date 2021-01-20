@@ -43,6 +43,7 @@ public class GetSingleBookingTest extends BaseTest {
 
 //  Response body (changes all the time, so values can be different on each test run)
 
+
 //          {
 //        "firstname": "Sally",
 //        "lastname": "Brown",
